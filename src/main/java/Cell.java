@@ -29,18 +29,37 @@ public class Cell {
         if (isFilled())
             return false; // might be replaced with exception as well
 
+        if (!isValidValue(value))
+            return false;
+
         this.value = value;
         return true;
     }
 
+    private boolean isValidValue(Character value) {
+        if ( value != 'X' && value != 'O')
+            return false;
+        return true;
+    }
+
     public boolean isFilled(){
-        return this.value == null;
+        return this.value != null;
     }
 
 //   Is there a better way to do it?
 //   It might return null,which I don't want
     public Character getValue(){
         return this.value;
+    }
+
+//   Return the row
+    public Integer getRow(){
+        return  this.row;
+    }
+
+//  Return Col
+    public Integer getColumn(){
+        return  this.col;
     }
 
 }

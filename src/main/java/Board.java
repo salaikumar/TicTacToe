@@ -3,9 +3,13 @@ import java.util.Iterator;
 /**
  * Tic Tac Toe - Board
  * Board Size :  N * N - 3 to 8.
+ * Instead of character Array , i created Something called as Cell. Nothing else
+ * It's just yet another board by now
  */
 public class Board {
 
+//    I love to write comments then and there.
+//    Properties
     private Integer boardSize;
     private Cell[][] cell;
 
@@ -29,6 +33,11 @@ public class Board {
     public boolean makeHisMove(Integer row, Integer col){
         Cell currentCell = cell[row][col];
         return currentCell.setValue('O');
+    }
+
+//  All the comments now present will be removed in final Production ready code
+    public Cell getCell(Integer row, Integer col){
+        return cell[row][col];
     }
 
 //  iterator for all cells in the board
