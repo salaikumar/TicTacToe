@@ -7,32 +7,28 @@ import java.util.Iterator;
 public class Board {
 
     private Integer boardSize;
-    private Cell[] cell;
+    private Cell[][] cell;
 
     public Board(Integer size){
         boardSize = size;
-        cell = new Cell[boardSize * boardSize];
+        cell = new Cell[boardSize][boardSize];
 
 //      Create as many instances
         for (int i= 0; i < boardSize; ++i){
             for (int j=0; j < boardSize; ++j){
-                cell[(i*boardSize)+j] = new Cell(i,j);
+                cell[i][j] = new Cell(i,j);
             }
         }
     }
 
     public boolean makeMyMove(Integer row,Integer col){
-        Cell currentCell = cell[getCellIndex(row,col)];
+        Cell currentCell = cell[row][col];
         return currentCell.setValue('X');
     }
 
     public boolean makeHisMove(Integer row, Integer col){
-        Cell currentCell = cell[getCellIndex(row,col)];
+        Cell currentCell = cell[row][col];
         return currentCell.setValue('O');
-    }
-
-    private Integer getCellIndex(Integer row, Integer col) {
-        return ((row-1 * boardSize) + col-1);
     }
 
 //  iterator for all cells in the board
@@ -40,24 +36,33 @@ public class Board {
         return new BoardIterator(cell);
     }
 
-//  Not sure if this is how Iterator should be implemented for a Class
+    public int size() {
+        return boardSize*boardSize;
+    }
+
+    //  Not sure if this is how Iterator should be implemented for a Class
 //  Just using it as it is.
     private class BoardIterator implements Iterator{
 
-        private  Cell[] cell;
-        private  Integer currentIndex;
+        private  Cell[][] cell;
+        private  Integer row;
+        private  Integer col;
 
-        public BoardIterator(Cell[] cell){
+        public BoardIterator(Cell[][] cell){
             this.cell  = cell;
-            currentIndex = 0; // is this right? what is the default value of Integer
         }
 
         public boolean hasNext() {
-            return currentIndex < boardSize * boardSize;
+            if (col == boardSize && row < boardSize-1 ){
+                col = 0;
+                row++;
+            }
+
+            return (row < boardSize && col < boardSize);
         }
 
         public Cell next() {
-            return cell[currentIndex++];
+            return cell[row][col++];
         }
     }
 }

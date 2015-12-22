@@ -30,6 +30,8 @@ public class BoardStatus {
 //   Predict the Win moves- row wise win
     public boolean winByRowForMe(){
 
+//      Get each row and compare
+
         return true;
     }
 

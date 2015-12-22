@@ -38,7 +38,7 @@ public class Cell {
     }
 
 //   Is there a better way to do it?
-//   It returns null,which I don't want
+//   It might return null,which I don't want
     public Character getValue(){
         return this.value;
     }
