@@ -25,9 +25,10 @@ public class CellTest {
         assertThat(cell1.getValue(), is('X'));
 
         Cell cell2  = new Cell(1,3);
-        assertThat(cell.setValue('Z'),is(false));
-        assertThat(cell.setValue('x'),is(false));
-
+        assertThat(cell2.setValue('Z'),is(false));
+        assertThat(cell2.setValue('x'),is(false));
+        cell2.setValue('X');
+        assertThat(cell2.toString(),is(new String("1,3-X")));
     }
 
 

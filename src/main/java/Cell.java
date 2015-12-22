@@ -1,6 +1,7 @@
 /**
  * Class : Cell
  * Individual cells in the Board
+ * Possible Cell Values : X, O
  */
 public class Cell {
 
@@ -60,6 +61,12 @@ public class Cell {
 //  Return Col
     public Integer getColumn(){
         return  this.col;
+    }
+
+//   Not yet tested.
+    @Override
+    public String toString(){
+        return new String( String.valueOf(row) + ',' + String.valueOf(col) + '-' + this.value);
     }
 
 }
