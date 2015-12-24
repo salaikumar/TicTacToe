@@ -69,4 +69,6 @@ public class Cell {
         return new String( String.valueOf(row) + ',' + String.valueOf(col) + '-' + this.value);
     }
 
+//  Equals method need to be implemented
+
 }
