@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -6,6 +7,7 @@ import java.util.Iterator;
  * Instead of character Array , i created Something called as Cell. Nothing else
  * It's just yet another board by now
  */
+
 /*
  * Assumption - Board Indexes Start from 0,0. Assumed the row and col value is passed as such.
  * Assume if for user, board index starts at 1,1, we don't handle it here
@@ -88,6 +90,59 @@ public class Board {
         return true;
     }
 
+
+    /*
+     * In Order to check the Game Status,
+     * We need to get all rows of the board, all columns of the Board
+     * or all Diagonals
+     * I'm going to return a Arraylist which itself would contain Arraylist at each position.
+     */
+
+//   Why am i not able to return the list interface?
+//   I should check this.
+
+    public ArrayList<ArrayList<Cell>> getAllRows(){
+        ArrayList<ArrayList<Cell>> rows = new ArrayList<ArrayList<Cell>>(boardSize);
+        for (int i = 0; i < boardSize ; ++i){
+            ArrayList<Cell> individualRow = new ArrayList<Cell>(boardSize);
+            for (int j=0; j< boardSize ; ++j){
+                individualRow.add(getCell(i,j));
+            }
+            rows.add(individualRow);
+        }
+        return rows;
+    }
+
+
+//   Return All columns
+    public ArrayList<ArrayList<Cell>> getAllColumns(){
+        ArrayList<ArrayList<Cell>> cols = new ArrayList<ArrayList<Cell>>(boardSize);
+        for (int i = 0; i < boardSize ; ++i){
+            ArrayList<Cell> individualCol = new ArrayList<Cell>(boardSize);
+            for (int j=0; j< boardSize ; ++j){
+                individualCol.add(getCell(j,i));
+            }
+            cols.add(individualCol);
+        }
+        return cols;
+    }
+
+//   Return the 2 diagonals
+    public ArrayList<ArrayList<Cell>> getDiagonals(){
+        ArrayList<ArrayList<Cell>> diagonals = new ArrayList<ArrayList<Cell>>(2);
+
+        ArrayList<Cell> diagonalOne = new ArrayList<Cell>();
+        for (int i= 0, j= 0; i < boardSize && j <boardSize; ++i,++j)
+            diagonalOne.add(getCell(i,j));
+        diagonals.add(diagonalOne);
+
+        ArrayList<Cell> diagonalTwo = new ArrayList<Cell>();
+        for (int i= 0, j= boardSize-1; i < boardSize && j <boardSize; ++i,--j)
+            diagonalTwo.add(getCell(i,j));
+        diagonals.add(diagonalTwo);
+
+        return diagonals;
+    }
 
     /*
      * Iterator Implementation

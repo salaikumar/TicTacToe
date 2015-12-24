@@ -32,7 +32,7 @@ public class BoardTest {
 
         board.makeMyMove(1,1);
 
-//      Should be replaced with equals method. 
+//      Should be replaced with equals method.
         Cell freecell = board.nextFreePosition();
         Cell expected = new Cell(0,0);
         assertThat(freecell.getRow(),is(expected.getRow()));
