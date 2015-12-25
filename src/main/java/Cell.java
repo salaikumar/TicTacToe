@@ -69,7 +69,7 @@ public class Cell {
         return new String( String.valueOf(row) + ',' + String.valueOf(col) + '-' + this.value);
     }
 
-
+    @Override
     public boolean equals(Object cell){
 
         Cell givenCell;

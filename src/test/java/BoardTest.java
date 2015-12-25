@@ -91,7 +91,31 @@ public class BoardTest {
         assertThat(actualRow.equals(expectedRow),is(true));
 
 
-//    
+//      Test If the Column is return properly
+        ArrayList<Cell> actualColumn = board.getAllColumns().get(0);
+
+//      Create an Expected column and make it an Array List.
+//      You need to move on to higher level of abstraction soon salai
+        ArrayList<Cell> expectedColumn = new ArrayList<Cell>(3);
+        expectedColumn.add(new Cell(0,0,'O'));
+        expectedColumn.add(new Cell(1,0,'X'));
+        expectedColumn.add(new Cell(2,0,'X'));
+
+        assertThat(actualColumn.equals(expectedColumn),is(true));
+
+
+//      Check if Diagonals are returned properly
+        ArrayList<Cell> actualDiagonal =  board.getDiagonals().get(1);
+
+//      Create an Expected Diagonal
+        ArrayList<Cell> expectedDiagonal = new ArrayList<Cell>();
+        expectedDiagonal.add(new Cell(0,2,'O'));
+        expectedDiagonal.add(new Cell(1,1,'X'));
+        expectedDiagonal.add(new Cell(2,0,'X'));
+
+//      Assert
+        assertThat(actualDiagonal.equals(expectedDiagonal),is(true));
+
     }
 
 
