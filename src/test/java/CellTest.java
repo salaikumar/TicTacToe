@@ -29,6 +29,13 @@ public class CellTest {
         assertThat(cell2.setValue('x'),is(false));
         cell2.setValue('X');
         assertThat(cell2.toString(),is(new String("1,3-X")));
+
+
+//     Test Equals Methos.
+        Cell cellEq = new Cell(1,3);
+        cellEq.setValue('X');
+        assertThat(cell2.equals(cellEq),is(true));
+        assertThat(cell2.equals(cell),is(false));
     }
 
 

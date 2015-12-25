@@ -98,7 +98,7 @@ public class Board {
      * I'm going to return a Arraylist which itself would contain Arraylist at each position.
      */
 
-//   Why am i not able to return the list interface?
+//   Why am i not able to return the list interface object?
 //   I should check this.
 
     public ArrayList<ArrayList<Cell>> getAllRows(){
@@ -167,7 +167,7 @@ public class Board {
                 row++;
             }
 
-            return (row < boardSize && col < boardSize);
+            return ((row < boardSize) && (col < boardSize));
         }
 
         public Cell next() {

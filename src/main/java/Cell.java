@@ -63,12 +63,20 @@ public class Cell {
         return  this.col;
     }
 
-//   Not yet tested.
+
     @Override
     public String toString(){
         return new String( String.valueOf(row) + ',' + String.valueOf(col) + '-' + this.value);
     }
 
-//  Equals method need to be implemented
+    public boolean equals(Cell cell){
+            if (    this.getRow() == cell.getRow() &&
+                    this.getColumn() == cell.getColumn() &&
+                    this.getValue() == cell.getValue()
+                )
+
+            return true;
+        return  false;
+    }
 
 }
