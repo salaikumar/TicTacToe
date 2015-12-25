@@ -38,6 +38,13 @@ public class Game {
 
     }
 
+    /*
+     * Method does the things at the end of play
+     * Game Status :
+     * Winner      :
+     * Win By      :
+     * Board       :
+     */
     public void endPlay(){
 
     }
