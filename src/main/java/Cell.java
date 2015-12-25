@@ -69,13 +69,29 @@ public class Cell {
         return new String( String.valueOf(row) + ',' + String.valueOf(col) + '-' + this.value);
     }
 
-    public boolean equals(Cell cell){
-            if (    this.getRow() == cell.getRow() &&
-                    this.getColumn() == cell.getColumn() &&
-                    this.getValue() == cell.getValue()
-                )
 
-            return true;
+    public boolean equals(Object cell){
+
+        Cell givenCell;
+
+//        Same object comparison.
+        if ( this == cell)
+          return  true;
+
+//      Check if given object doesn't belong to this class
+        if ( !( cell instanceof Cell))
+            return false;
+
+//      Type case to Cell and compare
+        givenCell = (Cell) cell;
+
+        if (    this.getRow() == givenCell.getRow() &&
+                this.getColumn() == givenCell.getColumn() &&
+                this.getValue() == givenCell.getValue()
+            )
+
+        return true;
+
         return  false;
     }
 
