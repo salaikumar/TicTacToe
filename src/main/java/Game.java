@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Game Class
@@ -33,9 +34,44 @@ public class Game {
         this.board = board;
     }
 
-    //  Methods
+
+    /*
+     * Play
+     * play the game till there is no winner or board is not full
+     * When this method is called, Assuming, Players and Board is set
+     */
     public void play(){
 
+//      First move will be done by the bot.
+        Cell cell = board.nextFreePosition();
+        board.makeMyMove(cell.getRow(),cell.getColumn());
+
+        while (!isOver()){
+
+            Cell hisCell = move();
+            board.makeHisMove(hisCell.getRow(),hisCell.getColumn());
+
+            cell = board.nextFreePosition();
+            board.makeHisMove(cell.getRow(),cell.getColumn());
+
+            board.toString();
+        }
+
+        endPlay();  
+    }
+
+    private Cell move() {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Index Start - (0,0)");
+        System.out.println("Enter row of your move ");
+        Integer row=  scanner.nextInt();
+
+        System.out.println("Enter col of your move ");
+        Integer col = scanner.nextInt();
+
+        return new Cell(row,col,'O');
     }
 
     /*
