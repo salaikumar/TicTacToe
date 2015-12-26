@@ -41,18 +41,21 @@ public class Game {
      * play the game till there is no winner or board is not full
      * When this method is called, Assuming, Players and Board is set
      */
-    public void play(){
+    public void play() throws Exception {
 
-//      First move will be done by the bot.
-        Cell cell = board.nextFreePosition();
-        board.makeMyMove(cell.getRow(),cell.getColumn());
+//      Check if neccessary conditions to play the game is present
+        if (bot == null || human == null)
+            throw new Exception("Insufficient players");
+
+        if (board == null)
+            throw new Exception("Board is not Initialized");
 
         while (!isOver()){
 
             Cell hisCell = move(); // POST to move method ur Parameters?
             board.makeHisMove(hisCell.getRow(),hisCell.getColumn());
 
-            cell = board.nextFreePosition();
+            Cell cell = board.nextFreePosition();
             board.makeHisMove(cell.getRow(),cell.getColumn());
 
             board.toString();
@@ -61,7 +64,7 @@ public class Game {
         endPlay();
     }
 
-    private Cell move() {
+    public Cell move() {
 
         Scanner scanner = new Scanner(System.in);
 
@@ -224,6 +227,14 @@ public class Game {
         }
 
         return  false;
+    }
+
+    public Player winner(){
+        if ( isBotWinner())
+            return bot;
+        else if ( isHumanWinner())
+            return human;
+        return null;
     }
 
 //  This feature will be implemented later.
