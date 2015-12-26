@@ -85,37 +85,29 @@ public class Game {
      * Win By      :
      * Board       :
      */
-    public String endPlay(){
+    public String endPlay() throws Exception {
 
+        if (!isOver())
+            throw new Exception("Game is not over");
 
-        String winner;
-        String winBy;
-
-        if (isBotWinner()){
-            winner = "BOT";
-            if ( winByColumn(bot))
+        String winner = "None";
+        String winBy  = "Board is Full";
+        if (isWinnerPresent()) {
+            winner = winner().getPlayerName();
+            if (winByColumn(bot))
                 winBy = "COLUMN";
             else if (winByRow(bot))
                 winBy = "ROW";
             else
                 winBy = "DIAGONAL";
         }
-        else if ( isHumanWinner()){
-            winner = "HUMAN";
-            if ( winByColumn(human))
-                winBy = "COLUMN";
-            else if (winByRow(human))
-                winBy = "ROW";
-            else
-                winBy = "DIAGONAL";
-        }
-        else{
+        else  {
             winner = "None";
-            winBy  = "Board is Full";
+            winBy = "Board is Full";
         }
+
 
         String boardValue = board.toString();
-
         return new String( "END" + "\n" + winner + "\n" + winBy + "\n" + boardValue);
     }
 
@@ -153,9 +145,6 @@ public class Game {
         return winByRow(human) || winByColumn(human) || winByDiagonal(human);
     }
 
-//  What is the point in me sending the properties of the same class as argument?
-//  Is that right?
-//  Let's think over it
     private boolean winByColumn(Player player) {
 
         Character value = player.getCellValue();
@@ -184,24 +173,18 @@ public class Game {
     private boolean winByRow(Player player) {
         Character value = player.getCellValue();
         Boolean   rowMatch = false;
-
         ArrayList<ArrayList<Cell>> rows = board.getAllRows();
-
         for ( ArrayList<Cell> row : rows){
-
             for (Cell cell : row){
-
                 if ( value != cell.getValue()){
                     rowMatch = false;
                     break;
                 }
                 rowMatch = true;
             }
-
             if ( rowMatch )
                 return true;
         }
-
         return  false;
     }
 
@@ -237,12 +220,4 @@ public class Game {
         return null;
     }
 
-//  This feature will be implemented later.
-//  I should just set all properties to null?
-//  Or reset the  Board alone? Clearing all values in Cells?
-//  I think the second one is more opt.
-//  Pushing to later...
-    public boolean reset(){
-        return false;
-    }
 }
