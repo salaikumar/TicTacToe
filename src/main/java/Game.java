@@ -6,6 +6,7 @@ import java.util.Scanner;
  * Implements the methods required to play the game
  */
 public class Game {
+
     private Player bot;
     private Player human;
     private Board board;
@@ -225,8 +226,7 @@ public class Game {
         return  false;
     }
 
-
-    //  This feature will be implemented later.
+//  This feature will be implemented later.
 //  I should just set all properties to null?
 //  Or reset the  Board alone? Clearing all values in Cells?
 //  I think the second one is more opt.
