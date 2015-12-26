@@ -48,7 +48,7 @@ public class Game {
 
         while (!isOver()){
 
-            Cell hisCell = move();
+            Cell hisCell = move(); // POST to move method ur Parameters?
             board.makeHisMove(hisCell.getRow(),hisCell.getColumn());
 
             cell = board.nextFreePosition();
@@ -57,7 +57,7 @@ public class Game {
             board.toString();
         }
 
-        endPlay();  
+        endPlay();
     }
 
     private Cell move() {
@@ -81,8 +81,38 @@ public class Game {
      * Win By      :
      * Board       :
      */
-    public void endPlay(){
+    public String endPlay(){
 
+
+        String winner;
+        String winBy;
+
+        if (isBotWinner()){
+            winner = "BOT";
+            if ( winByColumn(bot))
+                winBy = "COLUMN";
+            else if (winByRow(bot))
+                winBy = "ROW";
+            else
+                winBy = "DIAGONAL";
+        }
+        else if ( isHumanWinner()){
+            winner = "HUMAN";
+            if ( winByColumn(human))
+                winBy = "COLUMN";
+            else if (winByRow(human))
+                winBy = "ROW";
+            else
+                winBy = "DIAGONAL";
+        }
+        else{
+            winner = "None";
+            winBy  = "Board is Full";
+        }
+
+        String boardValue = board.toString();
+
+        return new String( "END" + "\n" + winner + "\n" + winBy + "\n" + boardValue);
     }
 
     /*
