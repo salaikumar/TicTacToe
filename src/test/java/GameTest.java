@@ -106,4 +106,18 @@ public class GameTest {
         }
     }
 
+    @Test (expected = Exception.class)
+    public void shouldTestPlayException() throws Exception {
+        Game game = new Game();
+        Player human = new Player("Salaikumar",'O');
+        Player bot   = new Player("Ashwathama" ,'X');
+        bot.makeBot();
+        game.setBot(bot);
+        game.setHuman(human);
+        Board board = new Board(3);
+//        game.setBoard(board);  // Exception cause;
+
+        game.play();
+    }
+
 }

@@ -9,17 +9,11 @@ public class Cell {
     private final Integer col;
     private Character value;
 
-    /*
-     * Create a new cell with row and column
-     */
     public Cell(Integer row, Integer col) {
         this.row = row;
         this.col = col;
     }
 
-    /*
-     * Create a new cell with  row, column and its value
-     */
     public Cell(Integer row, Integer col, Character value){
         this.row = row;
         this.col = col;
@@ -28,7 +22,7 @@ public class Cell {
 
     public boolean setValue(Character value){
         if (isFilled())
-            return false; // might be replaced with exception as well
+            return false;
 
         if (!isValidValue(value))
             return false;
@@ -47,22 +41,17 @@ public class Cell {
         return this.value != null;
     }
 
-//   Is there a better way to do it?
-//   It might return null,which I don't want
     public Character getValue(){
         return this.value;
     }
 
-//   Return the row
     public Integer getRow(){
         return  this.row;
     }
 
-//  Return Col
     public Integer getColumn(){
         return  this.col;
     }
-
 
     @Override
     public String toString(){
@@ -71,28 +60,21 @@ public class Cell {
 
     @Override
     public boolean equals(Object cell){
-
         Cell givenCell;
 
-//        Same object comparison.
         if ( this == cell)
           return  true;
 
-//      Check if given object doesn't belong to this class
         if ( !( cell instanceof Cell))
             return false;
 
-//      Type case to Cell and compare
         givenCell = (Cell) cell;
-
         if (    this.getRow() == givenCell.getRow() &&
                 this.getColumn() == givenCell.getColumn() &&
                 this.getValue() == givenCell.getValue()
             )
-
-        return true;
+                return true;
 
         return  false;
     }
-
 }

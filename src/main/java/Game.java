@@ -1,10 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Game Class
- * Implements the methods required to play the game
- */
 public class Game {
 
     private Player bot;
@@ -35,15 +31,7 @@ public class Game {
         this.board = board;
     }
 
-
-    /*
-     * Play
-     * play the game till there is no winner or board is not full
-     * When this method is called, Assuming, Players and Board is set
-     */
     public void play() throws Exception {
-
-//      Check if neccessary conditions to play the game is present
         if (bot == null || human == null)
             throw new Exception("Insufficient players");
 
@@ -51,30 +39,23 @@ public class Game {
             throw new Exception("Board is not Initialized");
 
         while (!isOver()){
-
-            Cell hisCell = move(); // POST to move method ur Parameters?
+            Cell hisCell = move();
             board.makeHisMove(hisCell.getRow(),hisCell.getColumn());
 
             Cell cell = board.nextFreePosition();
-            board.makeHisMove(cell.getRow(),cell.getColumn());
-
+            board.makeMyMove(cell.getRow(),cell.getColumn());
             board.toString();
         }
-
         endPlay();
     }
 
     public Cell move() {
-
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Index Start - (0,0)");
         System.out.println("Enter row of your move ");
         Integer row=  scanner.nextInt();
-
         System.out.println("Enter col of your move ");
         Integer col = scanner.nextInt();
-
         return new Cell(row,col,'O');
     }
 
@@ -86,12 +67,12 @@ public class Game {
      * Board       :
      */
     public String endPlay() throws Exception {
-
         if (!isOver())
             throw new Exception("Game is not over");
 
         String winner = "None";
         String winBy  = "Board is Full";
+
         if (isWinnerPresent()) {
             winner = winner().getPlayerName();
             if (winByColumn(bot))
@@ -105,8 +86,6 @@ public class Game {
             winner = "None";
             winBy = "Board is Full";
         }
-
-
         String boardValue = board.toString();
         return new String( "END" + "\n" + winner + "\n" + winBy + "\n" + boardValue);
     }
@@ -117,20 +96,16 @@ public class Game {
      *                  : Board is full without any winners?
      */
     public boolean isOver(){
-
         if ( isWinnerPresent())
             return true;
-
         if ( board.isFull())
             return true;
-
         return false;
     }
 
     public boolean isWinnerPresent() {
         return isBotWinner() || isHumanWinner();
     }
-
     /*
      * Check if Bot had Win the game
      * Possible Winning : occupy One Complete Row
@@ -153,20 +128,16 @@ public class Game {
         ArrayList<ArrayList<Cell>> columns = board.getAllColumns();
 
         for ( ArrayList<Cell> column : columns){
-
             for (Cell cell : column){
-
                  if ( value != cell.getValue()){
                      colMatch = false;
                      break;
                  }
                  colMatch = true;
             }
-
             if ( colMatch )
                 return true;
         }
-
         return  false;
     }
 
@@ -191,24 +162,19 @@ public class Game {
     private boolean winByDiagonal(Player player) {
         Character value = player.getCellValue();
         Boolean   diaMatch = false;
-
         ArrayList<ArrayList<Cell>> diagonals = board.getDiagonals();
 
         for ( ArrayList<Cell> diagonal : diagonals){
-
             for (Cell cell : diagonal){
-
                 if ( value != cell.getValue()){
                     diaMatch = false;
                     break;
                 }
                 diaMatch = true;
             }
-
             if ( diaMatch )
                 return true;
         }
-
         return  false;
     }
 
@@ -219,5 +185,4 @@ public class Game {
             return human;
         return null;
     }
-
 }
