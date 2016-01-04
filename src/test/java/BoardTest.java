@@ -1,6 +1,7 @@
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -69,15 +70,15 @@ public class BoardTest {
         expectedRow.add(new Cell(1,0,'X'));
         expectedRow.add(new Cell(1,1,'X'));
         expectedRow.add(new Cell(1,2,'O'));
-        ArrayList<ArrayList<Cell>> allRows = board.getAllRows();
-        ArrayList<Cell> actualRow = allRows.get(1);
+        List<List<Cell>> allRows = board.getAllRows();
+        List<Cell> actualRow = allRows.get(1);
         assertThat(actualRow.equals(expectedRow),is(true));
 
 
         /*
          * getAllColumns Test
          */
-        ArrayList<Cell> actualColumn = board.getAllColumns().get(0);
+        List<Cell> actualColumn = board.getAllColumns().get(0);
         ArrayList<Cell> expectedColumn = new ArrayList<Cell>(3);
         expectedColumn.add(new Cell(0,0,'O'));
         expectedColumn.add(new Cell(1,0,'X'));
@@ -88,7 +89,7 @@ public class BoardTest {
         /*
          * getDiagonals Test
          */
-        ArrayList<Cell> actualDiagonal =  board.getDiagonals().get(1);
+        List<Cell> actualDiagonal =  board.getDiagonals().get(1);
         ArrayList<Cell> expectedDiagonal = new ArrayList<Cell>();
         expectedDiagonal.add(new Cell(0,2,'O'));
         expectedDiagonal.add(new Cell(1,1,'X'));

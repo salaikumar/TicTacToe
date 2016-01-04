@@ -12,16 +12,13 @@ public class GameTest {
     public void shouldTestGettersSetters() {
         Game game = new Game();
 
-//       Create two players
          Player human = new Player("Salaikumar",'O');
          Player bot   = new Player("Ashwathama" ,'X');
          bot.makeBot();
 
-//       Set players
          game.setBot(bot);
          game.setHuman(human);
 
-//       Create one board
          Board board = new Board(3);
          game.setBoard(board);
 

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class Board {
     private Integer boardSize;
@@ -55,8 +56,9 @@ public class Board {
         return true;
     }
 
-    public ArrayList<ArrayList<Cell>> getAllRows(){
-        ArrayList<ArrayList<Cell>> rows = new ArrayList<ArrayList<Cell>>(boardSize);
+    public List<List<Cell>> getAllRows(){
+
+        List<List<Cell>> rows = new ArrayList<List<Cell>>(boardSize);
         for (int i = 0; i < boardSize ; ++i){
             ArrayList<Cell> individualRow = new ArrayList<Cell>(boardSize);
             for (int j=0; j< boardSize ; ++j){
@@ -67,8 +69,8 @@ public class Board {
         return rows;
     }
 
-    public ArrayList<ArrayList<Cell>> getAllColumns(){
-        ArrayList<ArrayList<Cell>> cols = new ArrayList<ArrayList<Cell>>(boardSize);
+    public List<List<Cell>> getAllColumns(){
+        List<List<Cell>> cols = new ArrayList<List<Cell>>(boardSize);
         for (int i = 0; i < boardSize ; ++i){
             ArrayList<Cell> individualCol = new ArrayList<Cell>(boardSize);
             for (int j=0; j< boardSize ; ++j){
@@ -79,8 +81,8 @@ public class Board {
         return cols;
     }
 
-    public ArrayList<ArrayList<Cell>> getDiagonals(){
-        ArrayList<ArrayList<Cell>> diagonals = new ArrayList<ArrayList<Cell>>(2);
+    public List<List<Cell>> getDiagonals(){
+        List<List<Cell>> diagonals = new ArrayList<List<Cell>>(2);
         ArrayList<Cell> diagonalOne = new ArrayList<Cell>();
 
         for (int i= 0, j= 0; i < boardSize && j <boardSize; ++i,++j)
@@ -102,7 +104,6 @@ public class Board {
     }
 
     private class BoardIterator implements Iterator{
-
         private  Cell[][] cell;
         private  Integer row;
         private  Integer col;

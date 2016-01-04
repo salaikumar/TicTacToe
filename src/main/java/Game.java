@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -125,9 +125,9 @@ public class Game {
         Character value = player.getCellValue();
         Boolean   colMatch = false;
 
-        ArrayList<ArrayList<Cell>> columns = board.getAllColumns();
+        List<List<Cell>> columns = board.getAllColumns();
 
-        for ( ArrayList<Cell> column : columns){
+        for ( List<Cell> column : columns){
             for (Cell cell : column){
                  if ( value != cell.getValue()){
                      colMatch = false;
@@ -144,8 +144,8 @@ public class Game {
     private boolean winByRow(Player player) {
         Character value = player.getCellValue();
         Boolean   rowMatch = false;
-        ArrayList<ArrayList<Cell>> rows = board.getAllRows();
-        for ( ArrayList<Cell> row : rows){
+        List<List<Cell>> rows = board.getAllRows();
+        for ( List<Cell> row : rows){
             for (Cell cell : row){
                 if ( value != cell.getValue()){
                     rowMatch = false;
@@ -162,9 +162,9 @@ public class Game {
     private boolean winByDiagonal(Player player) {
         Character value = player.getCellValue();
         Boolean   diaMatch = false;
-        ArrayList<ArrayList<Cell>> diagonals = board.getDiagonals();
+        List<List<Cell>> diagonals = board.getDiagonals();
 
-        for ( ArrayList<Cell> diagonal : diagonals){
+        for ( List<Cell> diagonal : diagonals){
             for (Cell cell : diagonal){
                 if ( value != cell.getValue()){
                     diaMatch = false;
