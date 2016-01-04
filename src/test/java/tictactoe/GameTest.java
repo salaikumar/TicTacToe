@@ -1,10 +1,12 @@
+package tictactoe;
+
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 /**
- * Game Test Class
+ * tictactoe.Game Test Class
  */
 public class GameTest {
 

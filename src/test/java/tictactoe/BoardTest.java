@@ -1,3 +1,5 @@
+package tictactoe;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -7,13 +9,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 /**
- * Test Cases for Board  Class
+ * Test Cases for tictactoe.Board  Class
  */
 public class BoardTest {
 
     @Test
     public void shouldMakeMyMove() {
-//        Create a Board
+//        Create a tictactoe.Board
           Board board = new Board(3);
           assertThat(board.makeMyMove(1,1),is(true));
           assertThat(board.makeHisMove(1, 1),is(false));
@@ -42,7 +44,7 @@ public class BoardTest {
     }
 
     /*
-     * Check the Read only Enum or Non Destructive Enum Operations on Board Class
+     * Check the Read only Enum or Non Destructive Enum Operations on tictactoe.Board Class
      * Methods Tested: getAllRows, getAllColumns, getDiagonals
      */
     @Test

@@ -1,5 +1,5 @@
 # TicTacToe
-A Simple Tic Tac Toe Game Implementation.
+A Simple Tic Tac Toe tictactoe.Game Implementation.
 
 APIs are being built to expose it as Web Service as well as Play in Terminal.
 

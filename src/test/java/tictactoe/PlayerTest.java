@@ -1,15 +1,17 @@
+package tictactoe;
+
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 /**
- * Test Cases for Player class
+ * Test Cases for tictactoe.Player class
  */
 public class PlayerTest {
 
     /*
-     * Create an Player instance
+     * Create an tictactoe.Player instance
      * Get its name and value
      */
     @Test

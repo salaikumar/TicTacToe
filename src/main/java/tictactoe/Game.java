@@ -1,3 +1,8 @@
+package tictactoe;
+
+import tictactoe.Board;
+import tictactoe.Cell;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,7 +41,7 @@ public class Game {
             throw new Exception("Insufficient players");
 
         if (board == null)
-            throw new Exception("Board is not Initialized");
+            throw new Exception("tictactoe.Board is not Initialized");
 
         while (!isOver()){
             Cell hisCell = move();
@@ -61,17 +66,17 @@ public class Game {
 
     /*
      * Method does the things at the end of play
-     * Game Status :
+     * tictactoe.Game Status :
      * Winner      :
      * Win By      :
-     * Board       :
+     * tictactoe.Board       :
      */
     public String endPlay() throws Exception {
         if (!isOver())
-            throw new Exception("Game is not over");
+            throw new Exception("tictactoe.Game is not over");
 
         String winner = "None";
-        String winBy  = "Board is Full";
+        String winBy  = "tictactoe.Board is Full";
 
         if (isWinnerPresent()) {
             winner = winner().getPlayerName();
@@ -84,16 +89,16 @@ public class Game {
         }
         else  {
             winner = "None";
-            winBy = "Board is Full";
+            winBy = "tictactoe.Board is Full";
         }
         String boardValue = board.toString();
         return new String( "END" + "\n" + winner + "\n" + winBy + "\n" + boardValue);
     }
 
     /*
-     * isOver- Checks if the Game is over.
-     * Possible Scenario: Any Player had Won the game
-     *                  : Board is full without any winners?
+     * isOver- Checks if the tictactoe.Game is over.
+     * Possible Scenario: Any tictactoe.Player had Won the game
+     *                  : tictactoe.Board is full without any winners?
      */
     public boolean isOver(){
         if ( isWinnerPresent())

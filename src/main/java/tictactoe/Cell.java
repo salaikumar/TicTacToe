@@ -1,7 +1,9 @@
+package tictactoe;
+
 /**
- * Class : Cell
- * Individual cells in the Board
- * Possible Cell Values : X, O
+ * Class : tictactoe.Cell
+ * Individual cells in the tictactoe.Board
+ * Possible tictactoe.Cell Values : X, O
  */
 public class Cell {
 

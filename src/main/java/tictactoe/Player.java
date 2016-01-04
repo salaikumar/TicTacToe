@@ -1,6 +1,8 @@
+package tictactoe;
+
 /**
- * Player Class
- * Since it is a two player Game, At max two instances of this class will be present
+ * tictactoe.Player Class
+ * Since it is a two player tictactoe.Game, At max two instances of this class will be present
  * I'll try to make it work and then correct the logic
  */
 public class Player {
